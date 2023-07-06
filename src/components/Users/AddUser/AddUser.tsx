@@ -27,6 +27,7 @@ const AddUser = ({ onAddUser }: IAddUser) => {
     const submitHandler = (event: FormEvent) => {
         event.preventDefault();
         const { age, fullname, username, email } = userData;
+        const ageAsNumber = +age;
 
         if (fullname.trim().length === 0 || username.trim().length === 0) {
             return setError({
@@ -41,10 +42,8 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                 message: 'Please enter a valid email address.'
             });
         }
-        const ageAsNumber = +age;
-        console.log(ageAsNumber)
 
-        if (!Number.isInteger(ageAsNumber) || ageAsNumber < 18 || ageAsNumber > 95) {
+        if (!Number.isInteger(ageAsNumber) || ageAsNumber < 18 || ageAsNumber > 60) {
             return setError({
                 title: 'Invalid age',
                 message: 'Please enter a valid age (> 18).'

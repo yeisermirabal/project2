@@ -14,20 +14,20 @@ const UsersList = ({ users }: IUserList) => {
     return (
         <Card>
             <div className={classes.tableResponsive}>
-                <table>
+                <table className={classes.table}>
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Age</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Age</th>
                         </tr>
                     </thead>
                     <tbody>
                         {!users.length && (
                             <tr>
-                                <td colSpan={5} align="center">The user list is empty.</td>
+                                <td className={classes.empty} colSpan={5} align="center">The user list is empty.</td>
                             </tr>
                         )}
                         {
