@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { FormEvent, useRef, useState } from "react";
 
 /**Types */
-import { IAddUser, IUser, IError } from "../../Helpers/Types";
+import { IAddUser, IError } from "../../Helpers/Types";
 
 /**Components */
 import Card from "../../UI/Card";
@@ -12,21 +12,25 @@ import { emailRegex } from '../../Helpers/Helpers'
 /**Styles */
 import classes from './AddUser.module.css'
 
-const USER_DATA = {
-    username: '',
-    fullname: '',
-    email: '',
-    position: 'Developer',
-    age: 0
-}
-
 const AddUser = ({ onAddUser }: IAddUser) => {
-    const [userData, setUserData] = useState<IUser>(USER_DATA)
     const [error, setError] = useState<IError | null>()
+
+    const formRef = useRef<HTMLFormElement>(null);
+    const fullnameRef = useRef<HTMLInputElement>(null);
+    const usernameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const positionRef = useRef<HTMLSelectElement>(null);
+    const ageRef = useRef<HTMLInputElement>(null);
 
     const submitHandler = (event: FormEvent) => {
         event.preventDefault();
-        const { age, fullname, username, email } = userData;
+
+        const fullname = fullnameRef.current?.value || '';
+        const username = usernameRef.current?.value || '';
+        const email = emailRef.current?.value || '';
+        const position = positionRef.current?.value || 'Developer';
+        const age = ageRef.current?.value || '0';
+
         const ageAsNumber = +age;
 
         if (fullname.trim().length === 0 || username.trim().length === 0) {
@@ -50,14 +54,15 @@ const AddUser = ({ onAddUser }: IAddUser) => {
             });
         }
 
-        onAddUser(userData);
-        setUserData(USER_DATA);
-    }
+        onAddUser({
+            fullname,
+            username,
+            email,
+            position,
+            age: ageAsNumber
+        });
 
-    const inputChangeHandler = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { id, value } = event.target;
-
-        setUserData(prevState => ({ ...prevState, [id]: value }));
+        formRef.current?.reset();
     }
 
     const errorHandler = () => {
@@ -68,16 +73,15 @@ const AddUser = ({ onAddUser }: IAddUser) => {
         <>
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={classes.formContainer}>
-                <form onSubmit={submitHandler}>
+                <form onSubmit={submitHandler} ref={formRef}>
                     <div className={classes.formControls}>
                         <label htmlFor="fullname" className={classes.formLabel}>Full name</label>
                         <input
                             id="fullname"
                             type="text"
                             className={classes.formControl}
-                            onChange={inputChangeHandler}
                             autoComplete="off"
-                            value={userData.fullname}
+                            ref={fullnameRef}
                         />
                     </div>
                     <div className={classes.formControls}>
@@ -86,9 +90,8 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                             id="username"
                             type="text"
                             className={classes.formControl}
-                            onChange={inputChangeHandler}
                             autoComplete="off"
-                            value={userData.username}
+                            ref={usernameRef}
                         />
                     </div>
                     <div className={classes.formControls}>
@@ -97,9 +100,8 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                             id="email"
                             type="text"
                             className={classes.formControl}
-                            onChange={inputChangeHandler}
                             autoComplete="off"
-                            value={userData.email}
+                            ref={emailRef}
                         />
                     </div>
                     <div className={classes.formControls}>
@@ -107,8 +109,7 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                         <select
                             id="position"
                             className={`${classes.formControl} ${classes.formSelect}`}
-                            value={userData.position}
-                            onChange={inputChangeHandler}
+                            ref={positionRef}
                         >
                             <option value="Developer">Developer</option>
                             <option value="Designer">Designer</option>
@@ -122,9 +123,8 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                             id="age"
                             type="number"
                             className={classes.formControl}
-                            onChange={inputChangeHandler}
                             autoComplete="off"
-                            value={userData.age}
+                            ref={ageRef}
                         />
                     </div>
                     <div className="form-actions">
