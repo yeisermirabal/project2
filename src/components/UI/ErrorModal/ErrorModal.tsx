@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 
 /**Components */
 import Card from "../Card";
@@ -8,18 +9,18 @@ import Button from "../Button";
 import classes from './ErrorModal.module.css'
 
 /*Types */
-import { IError } from "../../../global/utils/Types";
+import { IPortalActions, IError } from "../../Helpers/Types";
 
 const ErrorModal = ({ title, message, onConfirm }: IError) => {
 
-    return (
-        <div className={classes.modal}>
-            <div
-                className={classes.backdrop}
-                onClick={onConfirm}
-            ></div>
-            <div className={classes.wrapper}>
-                <Card>
+    const Backdrop = ({ onConfirm }: IPortalActions) => {
+        return (<div className={classes.backdrop} onClick={onConfirm}></div>)
+    }
+
+    const ModalOverlay = ({ onConfirm }: IPortalActions) => {
+        return (
+            <div className={classes.modal}>
+                <Card className={classes.wrapper}>
                     <div className={classes.content}>
                         <div className={classes.header}>
                             {title}
@@ -33,7 +34,14 @@ const ErrorModal = ({ title, message, onConfirm }: IError) => {
                     </div>
                 </Card>
             </div>
-        </div>
+        )
+    }
+
+    return (
+        <>
+            {ReactDOM.createPortal(<Backdrop onConfirm={onConfirm} />, document.getElementById('backdrop-root') || document.createElement('div'))}
+            {ReactDOM.createPortal(<ModalOverlay onConfirm={onConfirm} />, document.getElementById('overlay-root') || document.createElement('div'))}
+        </>
     )
 }
 

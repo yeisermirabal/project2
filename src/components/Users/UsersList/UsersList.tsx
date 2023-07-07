@@ -4,7 +4,7 @@ import React from "react";
 import Card from "../../UI/Card/Card";
 
 /**Types */
-import { IUserList } from "../../../global/utils/Types";
+import { IUserList } from "../../Helpers/Types";
 
 /**Styles */
 import classes from './UserList.module.css'

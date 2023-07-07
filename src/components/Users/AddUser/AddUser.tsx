@@ -1,13 +1,13 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 /**Types */
-import { IAddUser, IUser, IError } from "../../../global/utils/Types";
+import { IAddUser, IUser, IError } from "../../Helpers/Types";
 
 /**Components */
 import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 import ErrorModal from "../../UI/ErrorModal/ErrorModal";
-import { emailRegex } from '../../../global/utils/Helpers'
+import { emailRegex } from '../../Helpers/Helpers'
 
 /**Styles */
 import classes from './AddUser.module.css'
@@ -66,6 +66,7 @@ const AddUser = ({ onAddUser }: IAddUser) => {
 
     return (
         <>
+            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={classes.formContainer}>
                 <form onSubmit={submitHandler}>
                     <div className={classes.formControls}>
@@ -131,11 +132,7 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                     </div>
                 </form>
             </Card>
-
-            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
         </>
-
-
     )
 }
 

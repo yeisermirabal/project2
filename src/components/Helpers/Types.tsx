@@ -1,3 +1,4 @@
+import { ReactNode } from "react"
 
 export interface IUser {
     username: string
@@ -19,5 +20,9 @@ export interface IAddUser {
 export interface IError {
     title: string
     message: string
+    onConfirm?: () => void
+}
+
+export interface IPortalActions {
     onConfirm?: () => void
 }
