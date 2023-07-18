@@ -74,41 +74,41 @@ const AddUser = ({ onAddUser }: IAddUser) => {
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={classes.formContainer}>
                 <form onSubmit={submitHandler} ref={formRef}>
-                    <div className={classes.formControls}>
-                        <label htmlFor="fullname" className={classes.formLabel}>Full name</label>
+                    <div className='formControls'>
+                        <label htmlFor="fullname" className='formLabel'>Full name</label>
                         <input
                             id="fullname"
                             type="text"
-                            className={classes.formControl}
+                            className='formControl'
                             autoComplete="off"
                             ref={fullnameRef}
                         />
                     </div>
-                    <div className={classes.formControls}>
-                        <label htmlFor="username" className={classes.formLabel}>Username</label>
+                    <div className='formControls'>
+                        <label htmlFor="username" className='formLabel'>Username</label>
                         <input
                             id="username"
                             type="text"
-                            className={classes.formControl}
+                            className='formControl'
                             autoComplete="off"
                             ref={usernameRef}
                         />
                     </div>
-                    <div className={classes.formControls}>
-                        <label htmlFor="email" className={classes.formLabel}>Email</label>
+                    <div className='formControls'>
+                        <label htmlFor="email" className='formLabel'>Email</label>
                         <input
                             id="email"
                             type="text"
-                            className={classes.formControl}
+                            className='formControl'
                             autoComplete="off"
                             ref={emailRef}
                         />
                     </div>
-                    <div className={classes.formControls}>
-                        <label htmlFor="position" className={classes.formLabel}>Position</label>
+                    <div className='formControls'>
+                        <label htmlFor="position" className='formLabel'>Position</label>
                         <select
                             id="position"
-                            className={`${classes.formControl} ${classes.formSelect}`}
+                            className={`formControl ${classes.formSelect}`}
                             ref={positionRef}
                         >
                             <option value="Developer">Developer</option>
@@ -117,12 +117,12 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                             <option value="Analyst">Analyst</option>
                         </select>
                     </div>
-                    <div className={classes.formControls}>
-                        <label htmlFor="age" className={classes.formLabel}>Age (years)</label>
+                    <div className='formControls'>
+                        <label htmlFor="age" className='formLabel'>Age (years)</label>
                         <input
                             id="age"
                             type="number"
-                            className={classes.formControl}
+                            className='formControl'
                             autoComplete="off"
                             ref={ageRef}
                         />

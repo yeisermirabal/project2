@@ -2,35 +2,6 @@
     padding: 1.25rem;
 }
 
-.formControls {
-    margin-bottom: 1rem;
-}
-
-.formControl {
-    display: block;
-    width: 100%;
-    padding: .47rem .75rem;
-    background-color: #f8f9fa;
-    background-clip: padding-box;
-    border: 1px solid #eff0f2;
-    appearance: none;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    &:focus {
-        border-color: #bbb5e7;
-        outline: 0;
-        box-shadow: none;
-    }
-}
-
-.formLabel {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
 .formSelect {
     padding: .68rem 1.75rem .68rem .75rem;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2324243c' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");

@@ -1,34 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 /*Components */
-import AddUser from './components/Users/AddUser';
-import UsersList from './components/Users/UsersList';
-
-/**Types */
-import { IUser } from './components/Helpers/Types';
+import Home from './components/Pages/Home';
+import Login from './components/Pages/Login';
 
 /**Styles */
 import classes from './App.module.css'
 
-function App() {
-  const [userList, setUserList] = useState<IUser[]>([])
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const addUserHandler = (user: IUser) => {
-    setUserList(prevUserList => [...prevUserList, { ...user, id: Math.random().toString() }]);
-  }
+  useEffect(() => {
+    const userLoggedInInfo = localStorage.getItem('isLoggedIn')
+
+    if (userLoggedInInfo === '1') {
+      setIsLoggedIn(true)
+    }
+  }, [])
+
+  const loginHandler = (email: string, password: string) => {
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem('isLoggedIn')
+    setIsLoggedIn(false);
+  };
+
 
   return (
     <>
-      <div className={`container-fluid ${classes.mainContent}`}>
-        <div className="row">
-          <div className="col-12 col-md-4">
-            <AddUser onAddUser={addUserHandler} />
-          </div>
-          <div className="col-12 col-md-8">
-            <UsersList users={userList} />
-          </div>
-        </div>
-      </div>
+      {!isLoggedIn && <Login onLogin={loginHandler} />}
+      {isLoggedIn && <Home onLogout={logoutHandler} />}
     </>
   );
 }

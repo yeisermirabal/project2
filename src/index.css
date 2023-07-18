@@ -5,6 +5,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body {
     margin: 0;
@@ -16,6 +20,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #2d2d49;
+    min-height: 100%;
 
     @media (max-width: 48rem) {
         font-size: 0.875rem;
@@ -114,6 +119,36 @@ button, input {
 .badgeStyle4 {
     color: #e1665d;
     background-color: rgba(225,102,93,.1);
+}
+
+.formControls {
+    margin-bottom: 1rem;
+}
+
+.formControl {
+    display: block;
+    width: 100%;
+    padding: .47rem .75rem;
+    background-color: #f8f9fa;
+    background-clip: padding-box;
+    border: 1px solid #eff0f2;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    &:focus {
+        border-color: #bbb5e7;
+        background-color: #e9e7fb;
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.formLabel {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 @media(min-width: 62rem) {
