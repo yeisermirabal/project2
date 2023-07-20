@@ -11,8 +11,8 @@ const App = () => {
   const ctx = useContext(AuthContext)
   return (
     <>
-      {!ctx.isLoggedIn && <Login onLogin={ctx.onLogin} />}
-      {ctx.isLoggedIn && <Home onLogout={ctx.onLogout} />}
+      {!ctx.isLoggedIn && <Login />}
+      {ctx.isLoggedIn && <Home />}
     </>
   );
 }

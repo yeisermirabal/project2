@@ -25,29 +25,6 @@ export interface IPortalActions {
     onConfirm?: () => void
 }
 
-export interface HomeProps {
-    onLogout: () => void
-}
-
-export interface ILogin {
-    email: string
-    password: string
-}
-
-export interface LoginProps {
-    onLogin: (email: string, password: string) => void;
-}
-
-export interface HeaderProps {
-    isAuthenticated: boolean
-    onLogout: () => void
-}
-
-export interface NavigationProps {
-    isLoggedIn: boolean
-    onLogout: () => void
-}
-
 export interface IStateReducer {
     value: string;
     isValid: boolean;

@@ -1,11 +1,13 @@
-import React, { ChangeEvent, FormEvent, useEffect, useReducer, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useContext, useEffect, useReducer, useState } from 'react';
 
 /**Components */
 import Card from '../../UI/Card';
 import Button from '../../UI/Button';
+import AuthContext from '../../../context/auth-context';
+import { emailRegex } from '../../Helpers/Helpers'
 
 /**Types */
-import { ActionReducer, IStateReducer, LoginProps } from '../../Helpers/Types';
+import { ActionReducer, IStateReducer } from '../../Helpers/Types';
 
 /**Styles */
 import classes from './Login.module.css';
@@ -15,10 +17,11 @@ import { ReactComponent as LoginIcon } from "../../../global/assets/icon1.svg";
 
 const emailReducer = (state: IStateReducer, action: ActionReducer) => {
     if (action.type === 'USER_INPUT') {
-        return { value: action.value, isValid: action.value.includes('@') }
+        return { value: action.value, isValid: emailRegex.test(action.value) }
     }
+
     if (action.type === 'INPUT_BLUR') {
-        return { value: state.value, isValid: state.value.includes('@') }
+        return { value: state.value, isValid: emailRegex.test(state.value) }
     }
     return { value: '', isValid: false }
 }
@@ -33,7 +36,8 @@ const passwordReducer = (state: IStateReducer, action: ActionReducer) => {
     return { value: '', isValid: false }
 }
 
-const Login = ({ onLogin }: LoginProps) => {
+const Login = () => {
+    const ctx = useContext(AuthContext);
     const [formIsValid, setFormIsValid] = useState(false);
 
     const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: false })
@@ -69,7 +73,7 @@ const Login = ({ onLogin }: LoginProps) => {
 
     const submitHandler = (event: FormEvent) => {
         event.preventDefault();
-        onLogin(emailState.value, passwordState.value);
+        ctx.onLogin(emailState.value, passwordState.value);
     };
 
     const LoginHeader = () => {

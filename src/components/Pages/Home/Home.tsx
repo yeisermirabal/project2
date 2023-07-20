@@ -9,9 +9,9 @@ import UsersList from '../../Users/UsersList';
 import classes from './Home.module.css';
 
 /**Types */
-import { HomeProps, IUser } from '../../Helpers/Types';
+import { IUser } from '../../Helpers/Types';
 
-const Home = ({ onLogout }: HomeProps) => {
+const Home = () => {
     const [userList, setUserList] = useState<IUser[]>([])
 
     const addUserHandler = (user: IUser) => {
