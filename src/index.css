@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap');
 
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(36,36,60,.2);
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -121,40 +136,6 @@ button, input {
     background-color: rgba(225,102,93,.1);
 }
 
-.formControls {
-    margin-bottom: 1rem;
-}
-
-.formControls.last {
-    margin-bottom: 1.5rem;
-}
-
-.formControl {
-    display: block;
-    width: 100%;
-    padding: .47rem .75rem;
-    background-color: #f8f9fa;
-    background-clip: padding-box;
-    border: 1px solid #eff0f2;
-    appearance: none;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    &:focus {
-        border-color: #bbb5e7;
-        background-color: #e9e7fb;
-        outline: 0;
-        box-shadow: none;
-    }
-}
-
-.formLabel {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
 @media(min-width: 62rem) {
     .col-md-4 {
       flex: 0 0 auto;
@@ -165,19 +146,4 @@ button, input {
         flex: 0 0 auto;
         width: 66.66666667%;
     }
-}
-
-::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(36,36,60,.2);
-    border-radius: 10px;
-    border: 2px solid #fff;
-}
-
-::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #fff;
 }

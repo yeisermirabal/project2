@@ -1,3 +1,5 @@
+import { InputHTMLAttributes } from "react"
+
 export interface IUser {
     username: string
     age: number
@@ -33,3 +35,8 @@ export interface IStateReducer {
 export type ActionReducer =
     | { type: 'USER_INPUT'; value: string }
     | { type: 'INPUT_BLUR' };
+
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+    isValid?: boolean
+    label: string
+}

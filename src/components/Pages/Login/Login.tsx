@@ -5,12 +5,14 @@ import Card from '../../UI/Card';
 import Button from '../../UI/Button';
 import AuthContext from '../../../context/auth-context';
 import { emailRegex } from '../../Helpers/Helpers'
+import Input from '../../UI/Input';
 
 /**Types */
 import { ActionReducer, IStateReducer } from '../../Helpers/Types';
 
 /**Styles */
 import classes from './Login.module.css';
+import inputClass from '../../UI/Input/Input.module.css'
 
 /*Icons*/
 import { ReactComponent as LoginIcon } from "../../../global/assets/icon1.svg";
@@ -39,7 +41,6 @@ const passwordReducer = (state: IStateReducer, action: ActionReducer) => {
 const Login = () => {
     const ctx = useContext(AuthContext);
     const [formIsValid, setFormIsValid] = useState(false);
-
     const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: false })
     const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value: '', isValid: false })
 
@@ -96,36 +97,27 @@ const Login = () => {
                 <LoginHeader />
                 <div className={classes.loginBody}>
                     <form onSubmit={submitHandler}>
-                        <div
-                            className={`formControls ${emailState.isValid === false ? classes.invalid : ''
-                                }`}
-                        >
-                            <label htmlFor="email" className='formLabel'>E-Mail</label>
-                            <input
-                                type="email"
-                                id="email"
-                                className='formControl'
-                                autoComplete='off'
-                                value={emailState.value}
-                                onChange={emailChangeHandler}
-                                onBlur={validateEmailHandler}
-                            />
-                        </div>
-                        <div
-                            className={`formControls last ${passwordState.isValid === false ? classes.invalid : ''
-                                }`}
-                        >
-                            <label htmlFor="password" className='formLabel'>Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                autoComplete='off'
-                                className='formControl'
-                                value={passwordState.value}
-                                onChange={passwordChangeHandler}
-                                onBlur={validatePasswordHandler}
-                            />
-                        </div>
+                        <Input
+
+                            isValid={emailState.isValid}
+                            label='E-Mail'
+                            type='email'
+                            id='email'
+                            value={emailState.value}
+                            onChange={emailChangeHandler}
+                            onBlur={validateEmailHandler}
+                        />
+                        <Input
+
+                            isValid={passwordState.isValid}
+                            label='Password'
+                            type='password'
+                            id='password'
+                            className={inputClass.lastElement}
+                            value={passwordState.value}
+                            onChange={passwordChangeHandler}
+                            onBlur={validatePasswordHandler}
+                        />
                         <div className={classes.actions}>
                             <Button type="submit" className={classes.btn} disabled={!formIsValid}>
                                 Login

@@ -11,6 +11,7 @@ import { emailRegex } from '../../Helpers/Helpers'
 
 /**Styles */
 import classes from './AddUser.module.css'
+import inputClass from '../../UI/Input/Input.module.css'
 
 const AddUser = ({ onAddUser }: IAddUser) => {
     const [error, setError] = useState<IError | null>()
@@ -74,41 +75,41 @@ const AddUser = ({ onAddUser }: IAddUser) => {
             {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
             <Card className={classes.formContainer}>
                 <form onSubmit={submitHandler} ref={formRef}>
-                    <div className='formControls'>
-                        <label htmlFor="fullname" className='formLabel'>Full name</label>
+                    <div className={inputClass.formControls}>
+                        <label htmlFor="fullname" className={inputClass.formLabel}>Full name</label>
                         <input
                             id="fullname"
                             type="text"
-                            className='formControl'
+                            className={inputClass.formControl}
                             autoComplete="off"
                             ref={fullnameRef}
                         />
                     </div>
-                    <div className='formControls'>
-                        <label htmlFor="username" className='formLabel'>Username</label>
+                    <div className={inputClass.formControls}>
+                        <label htmlFor="username" className={inputClass.formLabel}>Username</label>
                         <input
                             id="username"
                             type="text"
-                            className='formControl'
+                            className={inputClass.formControl}
                             autoComplete="off"
                             ref={usernameRef}
                         />
                     </div>
-                    <div className='formControls'>
-                        <label htmlFor="email" className='formLabel'>Email</label>
+                    <div className={inputClass.formControls}>
+                        <label htmlFor="email" className={inputClass.formLabel}>Email</label>
                         <input
                             id="email"
                             type="text"
-                            className='formControl'
+                            className={inputClass.formControl}
                             autoComplete="off"
                             ref={emailRef}
                         />
                     </div>
-                    <div className='formControls'>
-                        <label htmlFor="position" className='formLabel'>Position</label>
+                    <div className={inputClass.formControls}>
+                        <label htmlFor="position" className={inputClass.formLabel}>Position</label>
                         <select
                             id="position"
-                            className={`formControl ${classes.formSelect}`}
+                            className={`${inputClass.formControl} ${classes.formSelect}`}
                             ref={positionRef}
                         >
                             <option value="Developer">Developer</option>
@@ -117,12 +118,12 @@ const AddUser = ({ onAddUser }: IAddUser) => {
                             <option value="Analyst">Analyst</option>
                         </select>
                     </div>
-                    <div className='formControls'>
-                        <label htmlFor="age" className='formLabel'>Age (years)</label>
+                    <div className={inputClass.formControls}>
+                        <label htmlFor="age" className={inputClass.formLabel}>Age (years)</label>
                         <input
                             id="age"
                             type="number"
-                            className='formControl'
+                            className={inputClass.formControl}
                             autoComplete="off"
                             ref={ageRef}
                         />
