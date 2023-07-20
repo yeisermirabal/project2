@@ -20,15 +20,16 @@ Node.js and npm installed.
 - Open your browser and navigate to: http://localhost:3000
 
 ## Usage
-- Fill out the form fields for the user's full name, username, email, position, and age.
+- Login into the App, fill fields with your email and password (not validation required for password)
+- When you logged in, fill out the form fields for the user's full name, username, email, position, and age.
 - Click on the 'Add User' button to add the user to the list.
 - If there are any validation errors, a modal will appear displaying the error.
 - The list of added users will appear on the right side of the screen.
 
 ## Technologies Used
-React 
+React (Context Api, Reducer)
 Typescript
-CSS
+CSS (Modules)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
