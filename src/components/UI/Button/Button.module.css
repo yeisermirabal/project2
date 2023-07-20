@@ -1,5 +1,8 @@
 .button {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     padding: 0.47rem 0.75rem;
     font-weight: 400;
     color: #ffffff;
@@ -24,5 +27,12 @@
         background-color: #5f55a6;
         border-color: #59509b;
         box-shadow: 0 0 0 0.15rem rgba(139,128,214, .5);
+    }
+
+    &:disabled {
+        color: #2d2d49;
+        background-color: rgba(36,36,60,.1);
+        border-color: rgba(36,36,60,.1);
+        cursor: not-allowed;
     }
 }

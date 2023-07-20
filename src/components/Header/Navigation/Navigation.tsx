@@ -6,23 +6,21 @@ import classes from './Navigation.module.css';
 /**Types */
 import { NavigationProps } from '../../Helpers/Types';
 
+/**Components */
+import Button from '../../UI/Button';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 const Navigation = ({ isLoggedIn, onLogout }: NavigationProps) => {
+
   return (
     <nav className={classes.nav}>
       <ul>
         {isLoggedIn && (
           <li>
-            <a href="/">Users</a>
-          </li>
-        )}
-        {isLoggedIn && (
-          <li>
-            <a href="/">Admin</a>
-          </li>
-        )}
-        {isLoggedIn && (
-          <li>
-            <button onClick={onLogout}>Logout</button>
+            <Button onClick={onLogout} className={`${classes.btn} ${classes.btnSecundary}`}>
+              <LogoutIcon />
+              Logout
+            </Button>
           </li>
         )}
       </ul>

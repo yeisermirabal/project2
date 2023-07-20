@@ -125,6 +125,10 @@ button, input {
     margin-bottom: 1rem;
 }
 
+.formControls.last {
+    margin-bottom: 1.5rem;
+}
+
 .formControl {
     display: block;
     width: 100%;

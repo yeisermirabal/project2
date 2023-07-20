@@ -53,18 +53,10 @@ const Login = ({ onLogin }: LoginProps) => {
 
     const emailChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         dispatchEmail({ type: 'USER_INPUT', value: event.target.value });
-
-        setFormIsValid(
-            event.target.value.includes('@') && passwordState.isValid
-        );
     };
 
     const passwordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        dispatchEmail({ type: 'USER_INPUT', value: event.target.value });
-
-        setFormIsValid(
-            emailState.isValid && event.target.value.trim().length > 6
-        );
+        dispatchPassword({ type: 'USER_INPUT', value: event.target.value });
     };
 
     const validateEmailHandler = () => {
@@ -116,7 +108,7 @@ const Login = ({ onLogin }: LoginProps) => {
                             />
                         </div>
                         <div
-                            className={`formControls ${passwordState.isValid === false ? classes.invalid : ''
+                            className={`formControls last ${passwordState.isValid === false ? classes.invalid : ''
                                 }`}
                         >
                             <label htmlFor="password" className='formLabel'>Password</label>

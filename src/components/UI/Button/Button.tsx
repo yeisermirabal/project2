@@ -5,7 +5,7 @@ import React, { ButtonHTMLAttributes } from "react";
 /**Styles */
 import classes from "./Button.module.css"
 
-const Button = ({ children, className, type, onClick }: ButtonHTMLAttributes<HTMLButtonElement>) => {
+const Button = ({ children, className, type, disabled, onClick }: ButtonHTMLAttributes<HTMLButtonElement>) => {
     const buttonType: "button" | "reset" | "submit" | undefined = type;
 
     return (
@@ -13,6 +13,7 @@ const Button = ({ children, className, type, onClick }: ButtonHTMLAttributes<HTM
             className={`${classes.button} ${className}`}
             type={buttonType || "button"}
             onClick={onClick}
+            disabled={disabled}
         >
             {children}
         </button>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 /**Components */
+import Header from '../../Header';
 import AddUser from '../../Users/AddUser';
 import UsersList from '../../Users/UsersList';
 
@@ -18,16 +19,19 @@ const Home = ({ onLogout }: HomeProps) => {
     }
 
     return (
-        <div className={`container-fluid ${classes.mainContent}`}>
-            <div className="row">
-                <div className="col-12 col-md-4">
-                    <AddUser onAddUser={addUserHandler} />
-                </div>
-                <div className="col-12 col-md-8">
-                    <UsersList users={userList} />
+        <>
+            <Header />
+            <div className={`container-fluid ${classes.mainContent}`}>
+                <div className="row">
+                    <div className="col-12 col-md-4">
+                        <AddUser onAddUser={addUserHandler} />
+                    </div>
+                    <div className="col-12 col-md-8">
+                        <UsersList users={userList} />
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

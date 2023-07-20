@@ -1,0 +1,22 @@
+.mainHeader {
+    background: radial-gradient(at 50% -20%, #3f1e59, #311748) fixed;;
+}
+.navbarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    height: 85px;
+    padding: 0 calc(22px / 2);
+    max-width: 85%;
+}
+
+.titleHeader {
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+
+    @media (max-width: 48rem) {
+        font-size: 1rem;
+    }
+}
